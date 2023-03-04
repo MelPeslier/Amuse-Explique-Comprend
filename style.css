@@ -1,3 +1,7 @@
+/* 
+    Partie où l'on va créer des variables,
+    elles seront utilisable avec l'appel de la fonction "var(nom_de_la_fonction)"
+*/
 :root{
     --background-color: rgb(20,20,20);
     --text-menu-color: white;
@@ -21,6 +25,7 @@ body{
         Viewport : la partie visible par l'utilisateur d'une page web
     */
     height: 100vh;
+    width: 100vw;
 
     /* 
         Façon d'affichage d'un élément, ici en block-level flex container
@@ -72,6 +77,8 @@ body{
         z-index définit la position sur une pile d'un élément,
         Un index plus grand qu'un autre signifie que cet élément sera placer devant l'autre,
         inversement, un élément avec un index plus petit sera afficher derrière l'autre
+
+        "z" pour la profondeur, "x" l'axe horizontal et "y" l'axe vertical.
     */
     z-index: 2;
 }
@@ -97,27 +104,59 @@ body{
 }
 
 #menu-background-pattern{
+    /* 
+        Bien mettre la hauteur en "vh" pour "view-height" et la largeur en "vw" pour "view-width"
+    */
     height: 100vh;
-    width: 100vh;
+    width: 100vw;
 
-    background-image: radial-gradient(
-        rgba(255, 255, 255, 0.1) 9%, 
-        transparent 9%
-    );
+    /* 
+        Rajout d'une image de fond dans la div qui contient les items du menu
+
+        radial-gradient(
+            la couleur rgb(R,G,B,opacité) de où à où le gradiant reste de cette même couleur, priorité d'affichage
+            La seconde couleur (ici la couleur transparente) suivie de où à où le gradient restera de cette même couleur
+            (si un seul % de rentré, alors il n'y aura qu'un dégradé et pas de "section" ou la couleur est conservée !)
+    */
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 0% 9%, transparent 10%);
     
-
+    /* 
+        Ici on met la position de l'arrière plan à 0 par rapport à l'élément parent
+    */
     background-position: 0% 0%;
+
+    /* 
+        Ici on met la taille de l'arrière plan à 12% de la taille minimale du "viewport"
+    */
     background-size: 12vmin 12vmin;
 
     position:absolute;
+    /* 
+        Le fond d'ecran sera fixée avec un espace de 0 pixel vers la gauche et le haut, soit pas d'espace
+    */
     left: 0px;
     top: 0px;
+
+    /* 
+        Position à 1 en profondeur
+    */
     z-index: 1;
 
+    /* 
+        Lors de la transition,
+        on prendra "x" temps avec le mode "ease"
+    */
     transition: opacity 800ms ease,
         background-size 800ms ease;
 }
 
+/* 
+    On diminue la taille du fond d'ecran contenu dans cette div ainsi que son opacité
+
+    "~" signifie ceux qui sont les frères et ceux qui suivent le premère élément
+
+    Dans la partie .html, on remarquera que la div #menu-background-pattern suit bien la div #menu-items
+*/
 #menu-items:hover ~ #menu-background-pattern {
     background-size: 11vmin 11vmin;
     opacity: 0.5;
