@@ -1,0 +1,125 @@
+:root{
+    --background-color: rgb(20,20,20);
+    --text-menu-color: white;
+}
+/* 
+    Import de la police provenant de : https://fonts.google.com/specimen/Shantell+Sans?preview.size=38
+*/
+@import url('https://fonts.googleapis.com/css2?family=Shantell+Sans&display=swap');
+
+body{
+    background-color: var(--background-color);
+
+    /* extérieur */
+    margin:0px;
+}
+
+#menu{
+    /* 
+        On définit la div menu comme prenant 100% de la hauteur du "viewport"
+
+        Viewport : la partie visible par l'utilisateur d'une page web
+    */
+    height: 100vh;
+
+    /* 
+        Façon d'affichage d'un élément, ici en block-level flex container
+    */
+    display: flex;
+    align-items: center;
+}
+
+.menu-item{
+    color: var(--text-menu-color);
+
+    /* 
+        clamp(valeur minimum, valeur préférée, valeur maximum)
+    
+        Une fonction qui pour les "font-size" permet de créer une taille de police
+            qui s'ajuste avec la taille de l'écran SANS utiliser de mediaquerries @media
+    */
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-family: 'Shantell Sans', cursive;
+
+    /*
+        Affichage non plus en ligne mais en colonne
+    */
+    display: block;
+    text-decoration: none;
+
+    /* interieur */
+    padding: clamp(0.25rem, 0.5vw, 1rem) 0rem;
+
+    /* 
+        Quand il y aura une transition, les effets décrits ici viendront doucement et/ou avec délai
+    */
+    transition: opacity 600ms ease;
+}
+
+#menu-items{
+    /* 
+        Passera d'un minimum de 4rem à un maximum de 48rem de marge, avec une valeur préférée de 20vw
+    */
+    margin-left: clamp(4rem, 20vw, 48rem);
+
+    /* 
+        Positionner de maniere relative, avec de marges par rapport à sa position normale
+        et il sera impossible pour d'autres éléments de prendre la place restante
+    */
+    position: relative;
+
+    /*  
+        z-index définit la position sur une pile d'un élément,
+        Un index plus grand qu'un autre signifie que cet élément sera placer devant l'autre,
+        inversement, un élément avec un index plus petit sera afficher derrière l'autre
+    */
+    z-index: 2;
+}
+
+/* 
+    Cette ligne signifie qu'une fois que l'on passera la souris sur l'élément avec l'id="menu-items"
+    alors on ira chercher l'élément d'id="menu-item" et on règlera son opacitée,
+    à noter : le chevron > indique que l'action n'affectera que les éléments directemment descendant de l'élément précédent
+    exemple : ici on affectera les éléments id="menu-item" qui sont les enfants direct de l'élément d'id="menu-items"
+
+    à noter que l'élément " "(espace) signifie tout élément descendant du premier élément,
+    descendant premier comme lointain
+*/
+#menu-items:hover > .menu-item{
+    opacity: 0.3;
+}
+
+/* 
+    une fois qu'on est sur le menu, l'opacité de l'élément du menu sur lequel nous somme sera remis à 1
+*/
+#menu-items:hover > .menu-item:hover{
+    opacity: 1;
+}
+
+#menu-background-pattern{
+    height: 100vh;
+    width: 100vh;
+
+    background-image: radial-gradient(
+        rgba(255, 255, 255, 0.1) 9%, 
+        transparent 9%
+    );
+    
+
+    background-position: 0% 0%;
+    background-size: 12vmin 12vmin;
+
+    position:absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+
+    transition: opacity 800ms ease,
+        background-size 800ms ease;
+}
+
+#menu-items:hover ~ #menu-background-pattern {
+    background-size: 11vmin 11vmin;
+    opacity: 0.5;
+}
+
