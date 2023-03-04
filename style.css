@@ -5,6 +5,30 @@
 :root{
     --background-color: rgb(20,20,20);
     --text-menu-color: white;
+
+    --bg-size : 12vmin;
+
+    /* 
+        Différents gradients à utiliser selon l'envie !
+
+        NB : radial-gradient(shape size at position, start-color, ..., last-color)
+    */
+
+    /* 
+        Gradient cadrillage de points,
+        Besoin de set background-position à 0 0 
+    */
+    --gradient-point: 
+    radial-gradient(50% 50% at 25% 25%,  rgba(255, 0, 0, 0.5) 0% 9%, transparent 10%),
+    radial-gradient(50% 50% at 75% 75%,  rgba(102, 0, 255, 0.5) 0% 9%, transparent 10%);
+
+    /* 
+        Gradient vagues formées par des ronds,
+        beosin de mettre background-position = calc(var(--bg-size)/2) 0
+    */
+    --gradient-vague: 
+    radial-gradient(calc(var(--bg-size)/2) at top,  rgba(255, 255, 255, 0.1) 0% 99%, transparent 100%),
+    radial-gradient(calc(var(--bg-size)/2) at bottom,  rgba(255, 255, 255, 0.1) 99% 0%, transparent 100%);
 }
 /* 
     Import de la police provenant de : https://fonts.google.com/specimen/Shantell+Sans?preview.size=38
@@ -118,17 +142,21 @@ body{
             La seconde couleur (ici la couleur transparente) suivie de où à où le gradient restera de cette même couleur
             (si un seul % de rentré, alors il n'y aura qu'un dégradé et pas de "section" ou la couleur est conservée !)
     */
-    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 0% 9%, transparent 10%);
+    /* 
+        background-image: radial-gradient(shape size at position, start-color, ..., last-color);
+    */
+    background: var(--gradient-vague);
+;
     
     /* 
         Ici on met la position de l'arrière plan à 0 par rapport à l'élément parent
     */
-    background-position: 0% 0%;
+    background-position: 0% 0, calc(var(--bg-size)/2) 0;
 
     /* 
         Ici on met la taille de l'arrière plan à 12% de la taille minimale du "viewport"
     */
-    background-size: 12vmin 12vmin;
+    background-size: var(--bg-size) var(--bg-size);
 
     position:absolute;
     /* 
