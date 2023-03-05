@@ -5,6 +5,7 @@
 :root{
     --background-color: rgb(20,20,20);
     --text-menu-color: white;
+    --gradient-color: rgb(255, 255, 255,0.2);
 
     --bg-size : 12vmin;
 
@@ -22,8 +23,8 @@
         
     */
     --gradient-point: 
-    radial-gradient(50% 50% at 25% 25%,  rgba(255, 0, 0, 0.5) 0% 9%, transparent 10%),
-    radial-gradient(50% 50% at 75% 75%,  rgba(102, 0, 255, 0.5) 0% 9%, transparent 10%);
+    radial-gradient(50% 50% at 25% 25%, var(--gradient-color) 0% 9%, transparent 10%),
+    radial-gradient(50% 50% at 75% 75%,  var(--gradient-color) 0% 9%, transparent 10%);
 
     /* 
         Gradient vagues formées par des ronds,
@@ -36,8 +37,8 @@
             Elle sera relative à l'élément parent, soit à la taille du background ici, donc, transition douce !
     */
     --gradient-vague: 
-    radial-gradient(50% 50% at 50% 0%,  rgba(255, 0, 0, 0.5) 99%, transparent),
-    radial-gradient(50% 50% at 50% 100%,  rgba(102, 0, 255, 0.5) 99%, transparent);
+    radial-gradient(50% 50% at 50% 0%,  var(--gradient-color) 99%, transparent),
+    radial-gradient(50% 50% at 50% 100%,  var(--gradient-color) 99%, transparent);
 }
 
 /* 
