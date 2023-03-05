@@ -17,6 +17,9 @@
     /* 
         Gradient cadrillage de points,
         Besoin de set background-position à 0 0 
+
+        Explication de ce gradient !
+        
     */
     --gradient-point: 
     radial-gradient(50% 50% at 25% 25%,  rgba(255, 0, 0, 0.5) 0% 9%, transparent 10%),
@@ -25,15 +28,24 @@
     /* 
         Gradient vagues formées par des ronds,
         beosin de mettre background-position = calc(var(--bg-size)/2) 0
+
+        Utilisation de  pourcentage !
+            ->> Résolution de tous le sproblèmes!
+
+            "%" -> Relative to the parent Element !
+            Elle sera relative à l'élément parent, soit à la taille du background ici, donc, transition douce !
     */
     --gradient-vague: 
-    radial-gradient(calc(var(--bg-size)/2) at top,  rgba(255, 255, 255, 0.1) 0% 99%, transparent 100%),
-    radial-gradient(calc(var(--bg-size)/2) at bottom,  rgba(255, 255, 255, 0.1) 99% 0%, transparent 100%);
+    radial-gradient(50% 50% at 50% 0%,  rgba(255, 0, 0, 0.5) 99%, transparent),
+    radial-gradient(50% 50% at 50% 100%,  rgba(102, 0, 255, 0.5) 99%, transparent);
 }
+
 /* 
     Import de la police provenant de : https://fonts.google.com/specimen/Shantell+Sans?preview.size=38
 */
 @import url('https://fonts.googleapis.com/css2?family=Shantell+Sans&display=swap');
+
+
 
 body{
     background-color: var(--background-color);
@@ -145,16 +157,16 @@ body{
     /* 
         background-image: radial-gradient(shape size at position, start-color, ..., last-color);
     */
+
     background: var(--gradient-vague);
-;
     
     /* 
         Ici on met la position de l'arrière plan à 0 par rapport à l'élément parent
     */
-    background-position: 0% 0, calc(var(--bg-size)/2) 0;
+    background-position: 0% 0%, calc(var(--bg-size)/2) 0vmin;
 
     /* 
-        Ici on met la taille de l'arrière plan à 12% de la taille minimale du "viewport"
+        Ici on met la taille de l'arrière plan à 12% (car la variable --b-size est initialement à 12vmin) de la taille minimale du "viewport"
     */
     background-size: var(--bg-size) var(--bg-size);
 
@@ -174,9 +186,37 @@ body{
         Lors de la transition,
         on prendra "x" temps avec le mode "ease"
     */
-    transition: opacity 800ms ease,
-        background-size 800ms ease;
+
+    transition: 
+        opacity 800ms ease,
+        background 800ms ease;
 }
+
+/* 
+    Pour effectuer une transition douce dans la taille du gradient,
+    le gradient s'adapte immediatement, on va donc jouer sur l'opacité avec l'élément "before"
+
+    "ne fonctionne actuellement pas,  REVOIR l'Utilisation de before ! **********************************************
+
+    Mais problème résolu ! voir dans le root la déclaration du radial en % et non pluis sur une variable
+    -> utilisation de l'élément parent !
+*/
+/* #menu-background-pattern::before{
+    --bg-size: 11vmin;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: var(--gradient-vague);
+    transition: opacity 800ms ease;
+    z-index: -1;
+    opacity: 0;
+}
+
+#menu-items:hover ~ #menu-background-pattern:hover::before{
+    opacity: 1;
+} */
 
 /* 
     On diminue la taille du fond d'ecran contenu dans cette div ainsi que son opacité
@@ -186,7 +226,14 @@ body{
     Dans la partie .html, on remarquera que la div #menu-background-pattern suit bien la div #menu-items
 */
 #menu-items:hover ~ #menu-background-pattern {
-    background-size: 11vmin 11vmin;
+    /* 
+        Tous les éléments contenant cette variable s'adapte directement
+        Mais PAS les éléments dans le ROOT !
+
+        problème avec le gradient, il s'adapte directement, et non pas tranquillement : normal,
+            A voir avec l'élément before pour le prochain exo.
+    */
+    --bg-size: 11vmin;
     opacity: 0.5;
 }
 
