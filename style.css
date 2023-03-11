@@ -174,7 +174,7 @@ body{
 
 /* 
     Cette ligne signifie qu'une fois que l'on passera la souris sur l'élément avec l'id="menu-items"
-    alors on ira chercher l'élément d'id="menu-item" et on règlera son opacitée,
+    alors on ira chercher les éléments d'id="menu-item" et on règlera leur opacitée,
     à noter : le chevron > indique que l'action n'affectera que les éléments directemment descendant de l'élément précédent
     exemple : ici on affectera les éléments id="menu-item" qui sont les enfants direct de l'élément d'id="menu-items"
 
@@ -190,6 +190,45 @@ body{
 */
 #menu-items:hover > .menu-item:hover{
     opacity: 1;
+}
+
+/* 
+    Pour l'animation de haut en bas suivant sur quel élément du menu nous somme
+*/
+/* 
+***** ! Attribute selector ! *****
+    #menu[data-active-index="0"]
+        L'élément du dataset du menu dont l'index dans le dataset = "0"
+    > #menu-background-pattern
+        On affectera les éléments directement descendant de "menu" et on leur appliquera les effets suivants "{...}"
+*/
+#menu[data-active-index="0"] > #menu-background-pattern {
+    background-position: 0% 0%, 0% 0%;
+}
+#menu[data-active-index="1"] > #menu-background-pattern {
+    background-position: 0% -15%, 0% -7.5%;
+}
+#menu[data-active-index="2"] > #menu-background-pattern {
+    background-position: 0% -30%, 0% -15%;
+}
+#menu[data-active-index="3"] > #menu-background-pattern {
+    background-position: 0% -45%, 0% -31%;
+}
+
+#menu[data-active-index="0"] > #menu-background-image {
+    background-position: center 45%;
+}
+
+#menu[data-active-index="1"] > #menu-background-image {
+    background-position: center 50%;
+}
+
+#menu[data-active-index="2"] > #menu-background-image {
+    background-position: center 55%;
+}
+
+#menu[data-active-index="3"] > #menu-background-image {
+    background-position: center 60%;
 }
 
 #menu-background-pattern{
@@ -219,7 +258,7 @@ body{
         **********************************************************************************************************************************************************
     */
 
-    background: var(--gradient-heart);
+    background: var(--gradient-point);
     
     /* Ici on met la position de l'arrière plan à 0 par rapport à l'élément parent */
     background-position: 0% 0%, 0% 0%;
@@ -245,7 +284,7 @@ body{
     /* 
         Position à 1 en profondeur
     */
-    z-index: 1;
+    z-index: -1;
 
     /* 
         Lors de la transition,
@@ -302,3 +341,24 @@ body{
     opacity: 0.5;
 }
 
+
+#menu-background-image {
+    background-image: url("https://images.unsplash.com/photo-1492496913980-501348b61469?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80");
+    background-position: center 40%;
+    background-size: 110vmax;
+    height: 100%;
+    left: 0px;  
+    opacity: 0.15;
+    position: absolute;
+    top: 0px;
+    transition: opacity 800ms ease,
+        background-size 800ms ease,
+        background-position 800ms ease;
+    width: 100%;
+    z-index: 0;
+  }
+
+#menu-items:hover ~ #menu-background-image {
+    background-size: 100vmax;
+    opacity: 0.1;
+}
