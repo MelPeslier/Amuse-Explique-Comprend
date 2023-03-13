@@ -96,7 +96,7 @@
 /* 
     Import de la police provenant de : https://fonts.google.com/specimen/Shantell+Sans?preview.size=38
 */
-@import url('https://fonts.googleapis.com/css2?family=Shantell+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda&display=swap');
 
 
 
@@ -133,8 +133,7 @@ body{
             qui s'ajuste avec la taille de l'écran SANS utiliser de mediaquerries @media
     */
     font-size: clamp(3rem, 8vw, 5rem);
-    font-family: 'Shantell Sans', cursive;
-
+    font-family: 'Bodoni Moda', serif;
     /*
         Affichage non plus en ligne mais en colonne
     */
@@ -157,7 +156,7 @@ body{
     margin-left: clamp(4rem, 20vw, 48rem);
 
     /* 
-        Positionner de maniere relative, avec de marges par rapport à sa position normale
+        Positionner de maniere relative, avec des marges par rapport à sa position normale
         et il sera impossible pour d'autres éléments de prendre la place restante
     */
     position: relative;
@@ -206,13 +205,13 @@ body{
     background-position: 0% 0%, 0% 0%;
 }
 #menu[data-active-index="1"] > #menu-background-pattern {
-    background-position: 0% -15%, 0% -7.5%;
+    background-position: 0% -15%, 0% -0%;
 }
 #menu[data-active-index="2"] > #menu-background-pattern {
-    background-position: 0% -30%, 0% -15%;
+    background-position: 0% -15%, 0% -15%;
 }
 #menu[data-active-index="3"] > #menu-background-pattern {
-    background-position: 0% -45%, 0% -31%;
+    background-position: 0% -30%, 0% -15%;
 }
 
 #menu[data-active-index="0"] > #menu-background-image {
@@ -270,7 +269,7 @@ body{
     /* background-position: 0% 0%, calc(var(--bg-size)/2) calc(var(--bg-size)/2); */
 
     /* 
-        Ici on met la taille de l'arrière plan à 12% (car la variable --b-size est initialement à 12vmin) de la taille minimale du "viewport"
+        Ici on met la taille de l'arrière plan à 12% (car la variable --bg-size est initialement à 12vmin) de la taille minimale du "viewport"
     */
     background-size: var(--bg-size) var(--bg-size);
 
@@ -343,19 +342,25 @@ body{
 
 
 #menu-background-image {
-    background-image: url("https://images.unsplash.com/photo-1492496913980-501348b61469?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80");
+    background-image: url("images/energy_men_power.jpg");
+    
     background-position: center 40%;
     background-size: 110vmax;
-    height: 100%;
-    left: 0px;  
-    opacity: 0.15;
+
     position: absolute;
     top: 0px;
+    left: 0px;
+
+    height: 100%;
+    width: 100%;
+    
+    z-index: 0;
+
+    opacity: 0.15;
+
     transition: opacity 800ms ease,
         background-size 800ms ease,
         background-position 800ms ease;
-    width: 100%;
-    z-index: 0;
   }
 
 #menu-items:hover ~ #menu-background-image {
