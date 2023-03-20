@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+    <!-- 
+        css
+    -->
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+    <div id="menu">
+        <div id="center">
+            <div id="menu-items">
+                <a class="menu-item" href="/">Cours</a>
+                <a class="menu-item" href="/">Projets</a>
+                <a class="menu-item" href="/">Challenges</a>
+                <a class="menu-item" href="/">Jeux vidéos</a>
+            </div>
+    
+            <div id="menu-background-pattern"></div>
+            <div id="menu-background-image"></div>
+        </div>
+
+        <div id="reglages">
+            <div id="padding">
+                <div id="reglages-btn" onclick="affichageReglages()">
+                    <div id="fleche"></div>
+                </div>
+                <div id="reglages-items">
+                    <div class="reglages-item">
+                        <h4>Taille de fond des Gradient</h4>
+                        <input id="fond_gradient_range" type="range" min="6" max="20" step="1"></input>
+                    </div>
+                    <div class="reglages-item">
+                        <h4>Taille du contenu des Gradient</h4>
+                        <div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <!-- 
+        javascript
+    -->
+    <script src="../JS/menu_background_move.js"></script>
+
+    <script src="../JS/reglages.js"></script>
+</body>
+</html>
