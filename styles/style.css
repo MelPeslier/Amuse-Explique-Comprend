@@ -7,8 +7,8 @@
     --text-menu-color: white;
     --gradient-color: rgb(255, 255, 255, 0.2);
 
-    --bg-size : 19vmin;
-    --bg-size2 : 18vmin;
+    --bg-size : 13vmin;
+    --bg-size2 : calc(var(--bg-size) - 1vmin);
 
     /* 
         Différents gradients à utiliser selon l'envie !
@@ -32,6 +32,11 @@
         radial-gradient(50% 50% at 25% 25%, var(--gradient-color) 0% 9%, transparent 10%),
         radial-gradient(50% 50% at 75% 75%,  var(--gradient-color) 0% 9%, transparent 10%);
 
+    --bg-position-base: 0% 0%, 0% 0%;
+    --bg-position-base-hover-1: 0% calc(var(--bg-size)*-1), 0% 0%;
+    --bg-position-base-hover-2: 0% calc(var(--bg-size)*-1), 0% calc(var(--bg-size)*-1);
+    --bg-position-base-hover-3: 0% calc(var(--bg-size)*-2), 0% calc(var(--bg-size)*-1);
+
     /* 
         Gradient vagues formées par des ronds,
         beosin de mettre background-position = calc(var(--bg-size)/2) 0
@@ -42,9 +47,16 @@
             "%" -> Relative to the parent Element !
             Elle sera relative à l'élément parent, soit à la taille du background ici, donc, transition douce !
     */
-    --gradient-vague: 
-        radial-gradient(50% 50% at 50% 0%,  var(--gradient-color) 99%, transparent 100%),
-        radial-gradient(50% 50% at 50% 100%,  var(--gradient-color) 99%, transparent 100%);
+
+    --gradient-vague:
+    radial-gradient(50% 50% at 50% 0%,  var(--gradient-color) 99%, transparent 100%),
+    radial-gradient(50% 50% at 50% 100%,  var(--gradient-color) 99%, transparent 100%);
+    
+    --bg-position-vague: 0% 0%, calc(var(--bg-size)*0.5) 0%;
+    --bg-position-vague-hover-1: var(--bg-size) 0%, calc(var(--bg-size)*1.5) 0%;
+    --bg-position-vague-hover-2: calc(var(--bg-size)*2) 0%, calc(var(--bg-size)*2.5) 0%;
+    --bg-position-vague-hover-3: calc(var(--bg-size)*3) 0%, calc(var(--bg-size)*3.5) 0%;
+    
 
     --gradient-trefle-colors: var(--gradient-color) 98%, transparent 99%;
 
@@ -92,6 +104,16 @@
         radial-gradient(closest-corner at 80% 80%, var(--gradient-color) 0% 98%, transparent 99%),
         linear-gradient(227deg, var(--gradient-color) 0% 20%, transparent 21%),
         linear-gradient(133deg, var(--gradient-color) 0% 20%, transparent 21%);
+    
+    /* 
+        Variables utilisées, celles-ci seront à redéfinir en les remplacents
+        par les variables précédemments crées
+    */
+    --gradient-motif: var(--gradient-vague);
+    --bg-position: var(--bg-position-vague);
+    --bg-position-hover-1: var(--bg-position-vague-hover-1);
+    --bg-position-hover-2: var(--bg-position-vague-hover-2);
+    --bg-position-hover-3: var(--bg-position-vague-hover-3);
 }
 
 /* 
@@ -209,16 +231,16 @@ body{
         On affectera les éléments directement descendant de "menu" et on leur appliquera les effets suivants "{...}"
 */
 #menu[data-active-index="0"] #menu-background-pattern {
-    background-position: 0% 0%, 0% 0%;
+    background-position: var(--bg-position);
 }
 #menu[data-active-index="1"] #menu-background-pattern {
-    background-position: 0% -15%, 0% -0%;
+    background-position: var(--bg-position-hover-1);
 }
 #menu[data-active-index="2"] #menu-background-pattern {
-    background-position: 0% -15%, 0% -15%;
+    background-position: var(--bg-position-hover-2);
 }
 #menu[data-active-index="3"] #menu-background-pattern {
-    background-position: 0% -30%, 0% -15%;
+    background-position: var(--bg-position-hover-3);
 }
 
 #menu[data-active-index="0"] #menu-background-image {
@@ -264,10 +286,10 @@ body{
         **********************************************************************************************************************************************************
     */
 
-    background: var(--gradient-point);
+    background: var(--gradient-motif);
     
     /* Ici on met la position de l'arrière plan à 0 par rapport à l'élément parent */
-    background-position: 0% 0%, 0% 0%;
+    background-position: var(--bg-position);
 
     /* Pour le gradient vague */
     /* background-position: 0% 0%, calc(var(--bg-size)/2) 0vmin; */
@@ -276,7 +298,7 @@ body{
     /* background-position: 0% 0%, calc(var(--bg-size)/2) calc(var(--bg-size)/2); */
 
     /* 
-        Ici on met la taille de l'arrière plan à 12% (car la variable --bg-size est initialement à 12vmin) de la taille minimale du "viewport"
+        Ici on met la taille de l'arrière plan à 13vmin (car la variable --bg-size est initialement à 12vmin) de la taille minimale du "viewport"
     */
     background-size: var(--bg-size) var(--bg-size);
 

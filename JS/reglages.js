@@ -7,7 +7,7 @@ function affichageReglages(){
     }
 }
 
-
+// ********** partie taille de fond **********
 
 // addEventListener attache un élément qui gère les évènements à l'élément visé
 // addEventListener(event, function, Capture)
@@ -33,5 +33,8 @@ fond_gradient_input.value = parseInt(getComputedStyle(document.body).getProperty
 
 fond_gradient_input.addEventListener("input", () =>{
     r.style.setProperty('--bg-size', fond_gradient_input.value + "vmin");
-    r.style.setProperty('--bg-size2', fond_gradient_input.value - 1 + "vmin")
 });
+
+
+// ********** partie choix motif **********
+
