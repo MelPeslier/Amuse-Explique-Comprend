@@ -8,6 +8,7 @@
     --gradient-color: rgb(255, 255, 255, 0.2);
 
     --bg-size : 19vmin;
+    --bg-size2 : 18vmin;
 
     /* 
         Différents gradients à utiliser selon l'envie !
@@ -342,7 +343,7 @@ body{
         problème avec le gradient, il s'adapte directement, et non pas tranquillement : normal,
             A voir avec l'élément before pour le prochain exo.
     */
-    --bg-size: 11vmin;
+    --bg-size: var(--bg-size2);
 
     opacity: 0.5;
 }
