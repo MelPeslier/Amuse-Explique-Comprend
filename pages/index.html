@@ -24,8 +24,8 @@
 
         <div id="reglages">
             <div id="padding">
-                <div id="reglages-btn" onclick="affichageReglages()">
-                    <div id="fleche"></div>
+                <div class="reglages-btn" onclick="affichageReglages()">
+                    <div class="fleche haut-bas"></div>
                 </div>
                 <div id="reglages-items">
                     <div class="reglages-item">
@@ -34,6 +34,15 @@
                     </div>
                     <div class="reglages-item">
                         <h4>Choix des gradients</h4>
+                        <div class="reglages-btn">
+                            <div class="fleche droite" onclick="afficheFondEcranSuivant()"></div>
+                        </div>
+                        <div class="reglages-btn" onclick="afficheFondEcranPrecedent()">
+                            <div class="fleche gauche"></div>
+                        </div>
+                    </div>
+                    <div class="reglages-item">
+                        <h4>Choix d'autre chose</h4>
                         <div>
                         </div>
                     </div>

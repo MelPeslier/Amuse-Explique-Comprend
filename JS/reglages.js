@@ -38,3 +38,10 @@ fond_gradient_input.addEventListener("input", () =>{
 
 // ********** partie choix motif **********
 
+function afficheFondEcranPrecedent(){
+    console.log("Fond précédent");
+}
+
+function afficheFondEcranSuivant(){
+    console.log("Fond suivant");
+}
