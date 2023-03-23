@@ -1,6 +1,6 @@
 // Etant donner que ce code s'exécute lors de l'appel du script,
 // Et que ce script n'est pas une fonction qui se fait appeller par un élément,
-// Mais une un script qui va récupérer les élément HTML présents pour les utiliser.
+// Mais un un script qui va récupérer les élément HTML présents pour les utiliser.
 
 // ***** Il faut l'inclure au moins après les éléments concernés *****
 

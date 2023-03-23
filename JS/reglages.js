@@ -37,11 +37,65 @@ fond_gradient_input.addEventListener("input", () =>{
 
 
 // ********** partie choix motif **********
+let t_gradients = [
+    'var(--gradient-point)',
+    'var(--gradient-vague)',
+    'var(--gradient-trefle)',
+    'var(--gradient-trefle-inverse)',
+    'var(--gradient-half-circle)',
+    'var(--gradient-wall-paper)',
+    'var(--gradient-repeat-circle)',
+    'var(--gradient-heart)',
+];
 
-function afficheFondEcranPrecedent(){
-    console.log("Fond précédent");
-}
+let t_position_gradients = [
+    [ // pour le gradient points
+        'var(--bg-position-base)',
+        'var(--bg-position-point-hover-1)',
+        'var(--bg-position-point-hover-2)',
+        'var(--bg-position-point-hover-3)'
+    ],
+    [ // pour le gradient vague
+        'var(--bg-position-vague)',
+        'var(--bg-position-vague-hover-1)',
+        'var(--bg-position-vague-hover-2)',
+        'var(--bg-position-vague-hover-3)'
+    ],
+    [ // pour les autres gradients
+    'var(--bg-position-base)',
+    'var(--bg-position-base-hover-1)',
+    'var(--bg-position-base-hover-2)',
+    'var(--bg-position-base-hover-3)'
+]
+];
 
-function afficheFondEcranSuivant(){
-    console.log("Fond suivant");
+let num_gradient = 0;
+let num_position_gradient = 0;
+function afficheFondEcran(k){
+
+    num_gradient += k;
+    if (num_gradient > 7){
+        num_gradient = 0;
+    }
+    if (num_gradient < 0){
+        num_gradient = 7;
+    }
+    switch (num_gradient){
+        case 0 :
+            num_position_gradient = 0;
+            break;
+        case 1 :
+            num_position_gradient = 1;
+            break;
+        default:
+            num_position_gradient = 2;
+    }
+
+    
+
+    r.style.setProperty('--gradient-motif', t_gradients[num_gradient]);
+    r.style.setProperty('--bg-position', t_position_gradients[num_position_gradient][0]);
+    r.style.setProperty('--bg-position-hover-1', t_position_gradients[num_position_gradient][1]);
+    r.style.setProperty('--bg-position-hover-2', t_position_gradients[num_position_gradient][2]);
+    r.style.setProperty('--bg-position-hover-3', t_position_gradients[num_position_gradient][3]);
 }

@@ -154,11 +154,11 @@
         Variables utilisées dans le js! Celles-ci seront à redéfinir en les remplacents
         par les variables précédemments crées
     */
-    --gradient-motif: var(--gradient-heart);
+    --gradient-motif: var(--gradient-point);
     --bg-position: var(--bg-position-base);
-    --bg-position-hover-1: var(--bg-position-base-hover-1);
-    --bg-position-hover-2: var(--bg-position-base-hover-2);
-    --bg-position-hover-3: var(--bg-position-base-hover-3);
+    --bg-position-hover-1: var(--bg-position-point-hover-1);
+    --bg-position-hover-2: var(--bg-position-point-hover-2);
+    --bg-position-hover-3: var(--bg-position-point-hover-3);
 }
 
 /* 
