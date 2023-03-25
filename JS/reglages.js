@@ -1,9 +1,19 @@
+
+
+let deg = 45;
 function affichageReglages(){
-    let reglages_items = document.getElementById("reglages-items")
+    let reglages_items = document.getElementById("reglages-items");
+    let fleche = document.querySelector(".haut-bas");
     if (reglages_items.style.display == "block"){
         reglages_items.style.display="none";
+        deg = deg + 180;
+        fleche.style.transform="rotate("+deg+"deg)";
+        fleche.style.marginTop="5px";
     }else{
+        deg = deg + 180;
         reglages_items.style.display="block";
+        fleche.style.transform="rotate("+deg+"deg)";
+        fleche.style.marginTop="20px";
     }
 }
 

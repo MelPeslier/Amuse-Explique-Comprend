@@ -366,7 +366,8 @@ body{
 
     transition: 
         opacity 800ms ease,
-        background 800ms ease;
+        background 800ms ease
+    ;
 }
 
 /* 
@@ -501,6 +502,13 @@ Partie réglages
     margin-top: 20px;
     transform: rotate(225deg);
     */
+    /* 
+        transition: <property> <duration> <timing-function> <delay>
+    */
+    transition:
+        transform 1s ease,
+        margin-top 1s ease
+    ;
 }
 .fleche.droite{
     margin-top: 10px;
