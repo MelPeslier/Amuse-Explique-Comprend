@@ -521,6 +521,12 @@ Partie réglages
     transform: rotate(135deg);
 }
 
+.fleche{
+    transition:
+        opacity 200ms ease;
+    ;
+}
+
 #reglages-items{
     background-color: rgb(61, 61, 61);
     display: none;

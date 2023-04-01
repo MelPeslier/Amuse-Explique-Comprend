@@ -1,18 +1,31 @@
 
-
-let deg = 45;
+function rotateChangeAt(deg){
+    if (deg[0] > 360){
+        deg[1] = false;
+    }
+    if(deg[0] < 50){
+        deg[1] = true;
+    }
+    if(deg[1]){
+        deg[0] += 180;
+        return deg;
+    }
+    deg[0] -= 180;
+    return deg;
+}
+let deg = [45,true];
 function affichageReglages(){
     let reglages_items = document.getElementById("reglages-items");
     let fleche = document.querySelector(".haut-bas");
     if (reglages_items.style.display == "block"){
+        deg = rotateChangeAt(deg);
         reglages_items.style.display="none";
-        deg = deg + 180;
-        fleche.style.transform="rotate("+deg+"deg)";
+        fleche.style.transform="rotate("+deg[0]+"deg)";
         fleche.style.marginTop="5px";
     }else{
-        deg = deg + 180;
+        deg = rotateChangeAt(deg);
         reglages_items.style.display="block";
-        fleche.style.transform="rotate("+deg+"deg)";
+        fleche.style.transform="rotate("+deg[0]+"deg)";
         fleche.style.marginTop="20px";
     }
 }
@@ -82,6 +95,14 @@ let t_position_gradients = [
 let num_gradient = 0;
 let num_position_gradient = 0;
 function afficheFondEcran(k){
+    let fleche;
+    let bg = document.querySelector("#menu-background-pattern");
+    if (k>0){
+        fleche = document.querySelector(".droite");
+    }
+    else{
+        fleche = document.querySelector(".gauche");
+    }
 
     num_gradient += k;
     if (num_gradient > 7){
@@ -100,9 +121,6 @@ function afficheFondEcran(k){
         default:
             num_position_gradient = 2;
     }
-
-    
-
     r.style.setProperty('--gradient-motif', t_gradients[num_gradient]);
     r.style.setProperty('--bg-position', t_position_gradients[num_position_gradient][0]);
     r.style.setProperty('--bg-position-hover-1', t_position_gradients[num_position_gradient][1]);
